@@ -1,0 +1,13 @@
+# ³õÊ¼»¯Æ÷
+org.springframework.context.ApplicationContextInitializer=\
+com.huajie.deepinspringboot.context.AfterHelloWordApplicationContextInitializer,\
+com.huajie.deepinspringboot.context.HelloWordApplicationContextInitializer
+
+# ¼àÌý
+org.springframework.context.ApplicationListener=\
+com.huajie.deepinspringboot.listener.AfterHelloWordApplicationListener,\
+com.huajie.deepinspringboot.listener.HelloWordApplicationListener
+
+# Run Listeners
+org.springframework.boot.SpringApplicationRunListener=\
+com.huajie.deepinspringboot.run.HelloWorldRunListener
