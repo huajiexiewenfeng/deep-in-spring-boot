@@ -12,6 +12,10 @@
     <artifactId>spring-web-mvc</artifactId>
     <packaging>war</packaging>
 
+    <properties>
+        <start-class>com.xx.webapps.api.main.WebappsApiBidMain</start-class>
+    </properties>
+
     <dependencies>
         <!-- Spring Web MVC 依赖 -->
         <dependency>
@@ -31,6 +35,7 @@
     </dependencies>
 
     <build>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
@@ -43,12 +48,14 @@
                             <goal>exec-war-only</goal>
                         </goals>
                         <phase>package</phase>
-                        <configuration> <!-- ServletContext path -->
+                        <configuration>
+                            <!-- ServletContext path -->
                             <path>/</path>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
+
     </build>
 </project>
