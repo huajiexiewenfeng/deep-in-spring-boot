@@ -22,17 +22,17 @@ import javax.servlet.http.HttpServletResponse;
  * 替代 app-context.xml
  */
 @Configuration
-@EnableWebMvc
+//@EnableWebMvc
 public class WebMvcConfig implements WebMvcConfigurer {
 
-    @Bean
-    public ViewResolver viewResolver(){
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setViewClass(JstlView.class);
-        viewResolver.setPrefix("/WEB-INF/jsp/");
-        viewResolver.setSuffix(".jsp");
-        return viewResolver;
-    }
+//    @Bean
+//    public ViewResolver viewResolver(){
+//        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+//        viewResolver.setViewClass(JstlView.class);
+//        viewResolver.setPrefix("/WEB-INF/jsp/");
+//        viewResolver.setSuffix(".jsp");
+//        return viewResolver;
+//    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry){
