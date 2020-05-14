@@ -9,6 +9,7 @@
         <module>spring-application</module>
         <module>spring-web-mvc</module>
         <module>springboot-webmvc</module>
+        <module>springboot-rest</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
