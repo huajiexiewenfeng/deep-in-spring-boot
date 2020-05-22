@@ -43,12 +43,22 @@ public class ExtendPropertySourcesRunListener implements SpringApplicationRunLis
 
     @Override
     public void contextPrepared(ConfigurableApplicationContext context) {
-
+        ConfigurableEnvironment environment =  context.getEnvironment();
+        MutablePropertySources propertySources = environment.getPropertySources();
+        Map<String, Object> map = new HashMap<>();
+        map.put("user.id", 35);
+        MapPropertySource propertySource = new MapPropertySource("from-SpringApplicationRunListener#contextPrepared", map);
+        propertySources.addFirst(propertySource);
     }
 
     @Override
     public void contextLoaded(ConfigurableApplicationContext context) {
-
+        ConfigurableEnvironment environment =  context.getEnvironment();
+        MutablePropertySources propertySources = environment.getPropertySources();
+        Map<String, Object> map = new HashMap<>();
+        map.put("user.id", 45);
+        MapPropertySource propertySource = new MapPropertySource("from-SpringApplicationRunListener#contextLoaded", map);
+        propertySources.addFirst(propertySource);
     }
 
     @Override
@@ -68,6 +78,6 @@ public class ExtendPropertySourcesRunListener implements SpringApplicationRunLis
 
     @Override
     public int getOrder() {
-        return new EventPublishingRunListener(application, args).getOrder() + 1;
+        return new EventPublishingRunListener(application, args).getOrder() - 1;
     }
 }

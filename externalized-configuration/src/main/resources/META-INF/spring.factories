@@ -1,3 +1,12 @@
 # Run Listeners
 org.springframework.boot.SpringApplicationRunListener=\
 com.huajie.deepinspringboot.externlized.configuration.event.ExtendPropertySourcesRunListener
+
+org.springframework.context.ApplicationListener=\
+com.huajie.deepinspringboot.externlized.configuration.listener.ExtendPropertySourcesEventListener
+
+org.springframework.boot.env.EnvironmentPostProcessor=\
+com.huajie.deepinspringboot.externlized.configuration.processor.ExtendPropertySourcesEnvironmentPostProcessor
+
+org.springframework.context.ApplicationContextInitializer=\
+com.huajie.deepinspringboot.externlized.configuration.initializer.ExtendPropertySourcesInitializer
