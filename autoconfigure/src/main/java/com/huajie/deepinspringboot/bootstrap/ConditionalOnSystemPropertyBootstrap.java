@@ -18,7 +18,7 @@ public class ConditionalOnSystemPropertyBootstrap {
     }
 
     static {
-        System.setProperty("usr.name", "小仙");
+        System.setProperty("usr.name", "小");
     }
 
     public static void main(String[] args) {

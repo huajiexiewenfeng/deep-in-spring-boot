@@ -12,7 +12,7 @@ public class OnSystemPropertyCondition implements Condition {
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
         Map<String, Object> annotationAttributes = metadata.getAnnotationAttributes(ConditionalOnSystemProperty.class.getName());
-//取到配置的值
+        //取到配置的值
         String propertyName = String.valueOf(annotationAttributes.get("name"));
         String propertyValue = String.valueOf(annotationAttributes.get("value"));
         //系统值
