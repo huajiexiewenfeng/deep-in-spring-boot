@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.Environment;
+import org.springframework.core.env.MutablePropertySources;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -26,7 +27,7 @@ public class PropertySourceOrderTest {
 
     @Configuration
     @PropertySource(name = "test-propertySource", value = "classpath:META-INF/test.properties")
-    public static class MyConfig{
+    public static class MyConfig {
 
     }
 
@@ -40,6 +41,11 @@ public class PropertySourceOrderTest {
     private Long userId;
 
     @Test
+    public void testEnvironment() {
+        Assert.assertSame(environment, applicationContext.getEnvironment());
+    }
+
+    @Test
     public void testUserId() {
         Assert.assertEquals(userId, new Long(10));
         System.err.println("user.id:" + userId);
@@ -47,13 +53,16 @@ public class PropertySourceOrderTest {
 
     @Test
     public void testPropertySources() {
-        this.environment.getPropertySources().forEach(propertySource -> {
-            System.out.println(propertySource.toString());
-        });
+        MutablePropertySources propertySources = this.environment.getPropertySources();
+        int i = 0;
+        for (org.springframework.core.env.PropertySource<?> propertySource : propertySources) {
+            i++;
+            System.out.printf("顺序[%d]-名称[%s]:[%s]\n", i, propertySource.getName(), propertySource.toString());
+        }
     }
 
     @Test
-    public void testMyConfigBean(){
+    public void testMyConfigBean() {
         MyConfig bean = applicationContext.getBean(MyConfig.class);
         System.out.println(bean);
     }

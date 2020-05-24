@@ -6,6 +6,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.env.PropertySources;
 
 /**
@@ -26,9 +27,12 @@ public class ExtendPropertySourceBootstrap {
         Long userId = environment.getProperty("user.id", Long.class);
         System.out.println("用户id：" + userId);
 
-        environment.getPropertySources().forEach(propertySource -> {
-            System.out.println(propertySource.toString());
-        });
+        MutablePropertySources propertySources = environment.getPropertySources();
+        int i = 0;
+        for (org.springframework.core.env.PropertySource<?> propertySource : propertySources) {
+            i++;
+            System.out.printf("顺序[%d]-名称[%s]:[%s]\n", i, propertySource.getName(), propertySource.toString());
+        }
 
         applicationContext.close();
     }
