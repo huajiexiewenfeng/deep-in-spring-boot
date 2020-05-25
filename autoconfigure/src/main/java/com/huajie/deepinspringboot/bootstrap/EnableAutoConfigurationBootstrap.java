@@ -10,7 +10,12 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages = "com.huajie.deepinspringboot")
 public class EnableAutoConfigurationBootstrap {
 
+    static {
+        System.setProperty("usr.name","xwf");
+    }
+
     public static void main(String[] args) {
+
         ConfigurableApplicationContext context = new SpringApplicationBuilder(EnableAutoConfigurationBootstrap.class)
                 .web(WebApplicationType.NONE)
                 .run(args);
@@ -18,5 +23,9 @@ public class EnableAutoConfigurationBootstrap {
         String bean = context.getBean("helloWorld", String.class);
         System.out.println("自动装配 hello,world bean : " + bean);
         context.close();
+    }
+
+    private static <T> T[] of(T... args) {
+        return args;
     }
 }

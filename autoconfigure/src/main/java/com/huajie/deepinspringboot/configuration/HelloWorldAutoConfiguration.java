@@ -9,6 +9,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration // 模式注解装配
 @EnableHelloWorld // Enable 模块装配
-@ConditionalOnSystemProperty(name = "usr.name", value = "小仙") // 条件装配
+@ConditionalOnSystemProperty(name = "usr.name", value = "xwf") // 条件装配
 public class HelloWorldAutoConfiguration {
 }
